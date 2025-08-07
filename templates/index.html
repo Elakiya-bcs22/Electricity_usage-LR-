@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electricity Usage Cost Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: #cceeff; /* Light Sky Blue */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            width: 360px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #004d80;
+            font-size: 22px;
+        }
+
+        form input[type="number"] {
+            width: 100%;
+            padding: 12px 14px;
+            margin: 10px 0;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        form input[type="number"]:focus {
+            border-color: #3399ff;
+            box-shadow: 0 0 6px rgba(51, 153, 255, 0.4);
+            outline: none;
+        }
+
+        form input[type="submit"] {
+            background-color: #3399ff;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #1a8cff;
+        }
+
+        h3 {
+            margin-top: 25px;
+            color: #003366;
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                width: 90%;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Electricity Cost Prediction</h2>
+        <form method="post" action="/predict">
+            <input type="number" name="residents" placeholder="Number of Residents" step="1" required>
+            <input type="number" name="avg_daily_hours" placeholder="Avg Daily Usage (hrs)" step="0.1" required>
+            <input type="number" name="num_appliances" placeholder="Number of Appliances" step="1" required>
+            <input type="number" name="avg_unit_rate" placeholder="Avg Unit Rate (₹)" step="0.1" required>
+            <input type="submit" value="Predict">
+        </form>
+
+        <h3>{{ prediction }}</h3>
+    </div>
+
+</body>
+</html>
